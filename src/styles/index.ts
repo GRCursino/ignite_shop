@@ -27,7 +27,7 @@ export const {
       md: '1.125rem', // 18px
       lg: '1.25rem',  // 20px
       xl: '1.5rem',   // 24px
-      '2xl': 'r2em',  // 32px
+      '2xl': '2rem',  // 32px
     }
   }
 })
