@@ -1,5 +1,7 @@
 import Link from "next/link"
 import { ImageContainer, SuccessContainer } from "../styles/pages/success"
+import { GetServerSideProps } from "next"
+import { stripe } from "../lib/stripe"
 
 export default function Success(){
   return (
@@ -19,4 +21,18 @@ export default function Success(){
       </Link>
     </SuccessContainer>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const sessionId = String(query.session_id);
+  
+  const session = await stripe.checkout.sessions.retrieve(sessionId, {
+    expand: ['line_items']
+  })
+
+  return {
+    props: {
+
+    }
+  }
 }
